@@ -134,7 +134,7 @@ admin.informacionJuego();
 
 admin.buscarJuego("zelda"); 
 
-admin.actualizarJuego(juego2, "Zelda Breath", 75, "Aventura", "3.0"); // Actualiza
+admin.actualizarJuego(juego2, "Zelda Breath", 75, "Aventura", "3.0"); 
 
 admin.actualizarJuego(juego1,"Mario",40,"Aventura","6.0")
 admin.informacionJuego(); 
