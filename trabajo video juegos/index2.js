@@ -1,7 +1,6 @@
 class Consola {
-    #consolas = [];
     constructor(nombre,marca,año,generacion){
-        if(!nombre?.trim() || !marca?.trim){
+        if(!nombre?.trim() || !marca?.trim()){
             throw new Error("los campos de nombre y marca no pueden estar vacios")
         }
         this.nombre = nombre;
@@ -12,6 +11,27 @@ class Consola {
     informacion(){
         return `Nombre:${this.nombre ?? `Desconocido`}, Marca:${this.marca ?? `Desconocida`}, Año:${this.año ?? `N/A`},Generacion:${this.generacion ?? `N/A`}`
     }
+    actualizarDatos(nuevoNombre,nuevaMarca,nuevoAño,nuevaGeneracion){
+        const campos =[
+            {valor:nuevoNombre, propiedad:`nombre`, tipo:`string`, validar:(v) => v.length > 0},
+            {valor:nuevaMarca, propiedad:`marca`, tipo:`string`, validar:(v) => v.length > 0},
+            {valor:nuevoAño, propiedad:`Año`, tipo:`number`, validar:(v) => v.length > 0},
+            {valor:nuevaGeneracion, propiedad:`generacion`, tipo:`string`, validar:(v) => v.length > 0},
+        ]
+        campos.forEach(campo =>{
+            if(campo.validar(campo.valor)){
+                this[campo.propiedad] =campo.valor
+            }else{
+                console.log(`error para actualizar datos `);
+                
+            }
+        })
+    }
+
+}
+ class Inventario{
+ #consolas = [];
+  
     mostrarInformacion(){
         if(this.#consolas.length > 0){
             this.#consolas.forEach((consola,indice)=>{
@@ -49,5 +69,5 @@ class Consola {
                 console.log(`no se encontro la consola`);
         }
     }
-}
 
+}  
